@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Samantha turns 40. Join us in St. Pete, March 5–6, 2027.">
+<meta property="og:title" content="Samantha's 40th">
+<meta property="og:description" content="Join us in St. Pete, March 5–6, 2027. RSVP by Nov. 15th.">
+<style>:root{padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Samantha's 40th</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Figtree:wght@400;500;600;700&family=Yellowtail&display=swap">
+<style>
+/* Layout: a neon beach-bar page on the navy flamingo print. A neon wave strip up top, a night beach scene with
+   swaying neon palms behind a neon-tube marquee sign, then a menu board for the details and a glowing RSVP card.
+   Deliberately one look in both themes, with every color set explicitly. */
+:root {
+  --navy: #183262;
+  --navy-deep: #0d1c40;
+  --panel: #102552;
+  --white: #f2f6ff;
+  --muted: #b3c1e6;
+  --pink: #ff4fd8;
+  --green: #7cf03c;
+  --cyan: #3fe0ff;
+  --gold: #ffb63a;
+  --violet: #d65cf0;
+  --font-script: "Yellowtail", "Brush Script MT", cursive;
+  --font-slab: "Alfa Slab One", "Rockwell", "Georgia", serif;
+  --font-body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  padding-inline: 16px;
+  padding-block: 0 2.5rem;
+  background-color: var(--navy);
+  background-image: url("pattern2.webp");
+  background-repeat: repeat;
+  background-size: 460px 460px;
+}
+
+/* Neon wave strip across the top */
+.waves {
+  height: 30px;
+  margin-inline: -16px;
+  background-color: var(--navy-deep);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'><path d='M0 15 q7.5 -8 15 0 t15 0 t15 0 t15 0' fill='none' stroke='%233fe0ff' stroke-width='3' stroke-linecap='round'/></svg>");
+  background-repeat: repeat-x;
+  background-position: 0 center;
+  border-bottom: 2px solid var(--cyan);
+  box-shadow: 0 0 14px rgba(63, 224, 255, .55);
+  animation: roll 6s linear infinite;
+}
+@keyframes roll { from { background-position: 0 center; } to { background-position: 60px center; } }
+
+/* Hero scene */
+.hero { max-width: 60rem; margin-inline: auto; padding-block: 1.25rem 0; }
+.scene {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid var(--pink);
+  box-shadow: 0 0 18px rgba(255, 79, 216, .6), 0 0 2px var(--pink);
+  background: var(--navy-deep);
+}
+.scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+@media (max-width: 640px) { .scene { aspect-ratio: 4 / 5; } }
+
+.sway { transform-origin: 0 0; animation: sway 4.6s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(-4deg); } to { transform: rotate(3deg); } }
+.trunk-sway { transform-box: fill-box; transform-origin: 50% 100%; animation: trunk 4.6s ease-in-out infinite alternate; }
+@keyframes trunk { from { transform: rotate(-.9deg); } to { transform: rotate(.9deg); } }
+.wave { animation: wave 6s ease-in-out infinite alternate; }
+@keyframes wave { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+.lamp { animation: lamp 1.6s ease-in-out infinite alternate; }
+@keyframes lamp { from { opacity: .45; } to { opacity: 1; } }
+.twinkle { animation: twinkle 3s ease-in-out infinite alternate; }
+@keyframes twinkle { from { opacity: .15; } to { opacity: .9; } }
+.spin { transform-box: fill-box; transform-origin: center; animation: spin 40s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.preen { transform-box: fill-box; transform-origin: 50% 100%; animation: preen 3.8s ease-in-out infinite alternate; }
+@keyframes preen { from { transform: rotate(-2deg); } to { transform: rotate(2.5deg); } }
+
+/* Neon marquee sign */
+.sign-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 6% 4% 14%;
+}
+.sign {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: 1.6rem 2.2rem 1.4rem;
+  background: rgba(13, 28, 64, .88);
+  border: 3px solid var(--pink);
+  border-radius: 50% / 46%;
+  box-shadow: 0 0 16px rgba(255, 79, 216, .75), inset 0 0 16px rgba(255, 79, 216, .45);
+  text-align: center;
+  transform-origin: 50% 0;
+  animation: swing 5s ease-in-out infinite alternate;
+}
+@keyframes swing { from { transform: rotate(-1.4deg); } to { transform: rotate(1.4deg); } }
+.sign h1 { margin: 0; display: grid; line-height: 1; }
+.sign .script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 8vw, 4.2rem);
+  color: #ffd6f6;
+  letter-spacing: 0;
+  transform: rotate(-5deg);
+  text-shadow: 0 0 4px rgba(255, 79, 216, .7), 0 0 14px rgba(255, 79, 216, .55);
+  animation: flicker 4.5s linear infinite;
+}
+@keyframes flicker { 0%, 91%, 94%, 100% { opacity: 1; } 92%, 93% { opacity: .55; } }
+.sign .slab {
+  font-family: var(--font-slab);
+  font-weight: 400;
+  font-size: clamp(3rem, 12vw, 6rem);
+  color: #dffaff;
+  letter-spacing: .06em;
+  text-shadow: 0 0 4px rgba(63, 224, 255, .7), 0 0 15px rgba(63, 224, 255, .55);
+  margin-top: .1em;
+}
+.sign .tag {
+  display: inline-block;
+  margin-top: .55rem;
+  font-family: var(--font-slab);
+  font-size: clamp(.8rem, 2.4vw, 1.05rem);
+  letter-spacing: .12em;
+  color: #ffe2b0;
+  text-shadow: 0 0 5px rgba(255, 182, 58, .7), 0 0 12px rgba(255, 182, 58, .4);
+}
+.bulb {
+  position: absolute;
+  width: 9px; height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  animation: chase 1.8s steps(1, end) infinite;
+}
+.bulb.c0 { background: var(--gold); box-shadow: 0 0 8px 2px var(--gold); }
+.bulb.c1 { background: var(--cyan); box-shadow: 0 0 8px 2px var(--cyan); }
+.bulb.c2 { background: var(--green); box-shadow: 0 0 8px 2px var(--green); }
+@keyframes chase { 0%, 66% { opacity: 1; } 67%, 100% { opacity: .25; } }
+@media (max-width: 640px) {
+  .sign { padding: 1.2rem 1.4rem 1rem; }
+  .bulb { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; }
+}
+
+.dateline {
+  margin: 1.25rem auto 0;
+  width: 100%;
+  max-width: 44rem;
+  padding: .6rem 1.4rem;
+  background: var(--navy-deep);
+  border: 2px solid var(--cyan);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(63, 224, 255, .5);
+  text-align: center;
+  font-family: var(--font-slab);
+  font-size: clamp(.8rem, 3.7vw, 1.35rem);
+  letter-spacing: .05em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.dateline span { display: block; white-space: nowrap; }
+.dateline { position: relative; }
+@media (max-width: 820px) {
+  .dateline .tiki { right: 10%; top: auto; bottom: 62%; margin-top: 0; width: 64px; }
+}
+
+/* Jukebox pick */
+.jukebox {
+  margin: 1rem auto 0;
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem 1rem;
+  padding: .6rem 1rem;
+  background: var(--navy-deep);
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(255, 182, 58, .45);
+}
+.jukebox .now { display: grid; line-height: 1.25; text-align: left; min-width: 0; }
+.jukebox .label { font-family: var(--font-slab); font-size: .7rem; letter-spacing: .14em; color: var(--gold); }
+.jukebox .song { font-weight: 600; }
+.jukebox .song em { font-style: normal; color: var(--muted); font-weight: 500; }
+.jukebox .links { display: flex; gap: .5rem; }
+.jukebox a {
+  font: 600 .9rem/1 var(--font-body);
+  color: var(--navy-deep);
+  background: var(--gold);
+  text-decoration: none;
+  padding: .55rem .85rem;
+  border-radius: 999px;
+}
+.jukebox a:hover { background: #ffcc6e; }
+.jukebox a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.note-icon { width: 26px; height: 26px; flex: none; filter: drop-shadow(0 0 5px var(--gold)); }
+
+/* Content column */
+.wrap { max-width: 44rem; margin-inline: auto; display: grid; gap: 2rem; padding-block: 1.75rem 0; }
+
+/* Menu board */
+.menu {
+  background: var(--navy-deep);
+  border-radius: 12px;
+  padding: 1.6rem 1.6rem 1.2rem;
+  border: 3px solid var(--cyan);
+  box-shadow: 0 0 16px rgba(63, 224, 255, .55), inset 0 0 12px rgba(63, 224, 255, .2);
+}
+.menu h2 {
+  margin: 0 0 .9rem;
+  text-align: center;
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #e6ffd8;
+  text-shadow: 0 0 4px var(--green), 0 0 12px var(--green), 0 0 24px var(--green);
+}
+.menu dl { margin: 0; display: grid; gap: .9rem; }
+.row { display: grid; gap: .1rem; }
+.line { display: flex; align-items: baseline; gap: .5rem; }
+.line dt {
+  font-family: var(--font-slab);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .9rem;
+  color: var(--pink);
+  text-shadow: 0 0 8px rgba(255, 79, 216, .6);
+  white-space: nowrap;
+}
+.line .leader { flex: 1; min-width: 1.5rem; border-bottom: 2px dotted rgba(63, 224, 255, .6); transform: translateY(-4px); }
+.line dd { margin: 0; font-weight: 600; text-align: right; min-width: 0; }
+.row .note { margin: 0; text-align: right; font-size: .9rem; color: var(--muted); }
+
+/* RSVP */
+.rsvp {
+  position: relative;
+  border-radius: 14px;
+  border: 3px solid var(--pink);
+  box-shadow: 0 0 18px rgba(255, 79, 216, .65), inset 0 0 14px rgba(255, 79, 216, .25);
+  background: var(--navy-deep);
+}
+.rsvp-inner { padding: 2.25rem 1.6rem; display: grid; gap: 0; text-align: center; justify-items: center; }
+.rsvp .rsvp-inner h2 { margin-bottom: 1.4rem; }
+.rsvp-inner .intro { margin-bottom: .6rem; }
+.rsvp-inner .asks { margin-bottom: 1.6rem; }
+.rsvp-inner .btn { margin-bottom: 1.6rem; }
+.rsvp .kicker {
+  font-family: var(--font-slab);
+  letter-spacing: .14em;
+  font-size: .8rem;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(255, 182, 58, .7);
+}
+.rsvp h2 {
+  margin: 0;
+  font-family: var(--font-slab);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: .04em;
+  color: #ffe6fa;
+  text-shadow: 0 0 5px rgba(255, 79, 216, .65), 0 0 15px rgba(255, 79, 216, .45);
+  text-wrap: balance;
+}
+.h2-sub { font-size: .71em; }
+@media (min-width: 720px) { .h2-sub { white-space: nowrap; } }
+.rsvp p { margin: 0; }
+.asks { margin: 0; padding-left: 1.2rem; width: fit-content; text-align: left; display: grid; gap: .2rem; font-weight: 500; }
+.asks li::marker { color: var(--green); }
+.tiki {
+  position: absolute;
+  right: calc(10% - 44px); top: 50%;
+  margin-top: -62px;
+  width: 94px; height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 79, 216, .55));
+  animation: bob 3.2s ease-in-out infinite alternate;
+}
+@keyframes bob { from { transform: rotate(-3deg) translateY(0); } to { transform: rotate(3deg) translateY(-4px); } }
+.btn {
+  justify-self: center;
+  display: inline-block;
+  font: 700 1.05rem/1 var(--font-body);
+  letter-spacing: .02em;
+  text-decoration: none;
+  color: var(--navy-deep);
+  background: var(--pink);
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(255, 79, 216, .85);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover { background: #ff7ae2; transform: translateY(-2px); box-shadow: 0 0 26px rgba(255, 79, 216, 1); }
+.btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+.btn[aria-disabled="true"] { background: var(--muted); box-shadow: none; pointer-events: none; }
+.fine { font-size: .95rem; color: #5f6f99; }
+
+footer {
+  width: fit-content;
+  max-width: 44rem;
+  margin: 2.5rem auto 0;
+  padding: .5rem 1.1rem;
+  background: var(--navy-deep);
+  border: 1px solid rgba(255, 182, 58, .6);
+  border-radius: 999px;
+  text-align: center;
+  font-family: var(--font-slab);
+  letter-spacing: .14em;
+  font-size: .8rem;
+  color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waves, .scene *, .sign, .sign .script, .bulb, .tiki { animation: none !important; }
+  .btn { transition: none; }
+}
+
+/* Flip card */
+.flip { display: grid; perspective: 1600px; }
+.face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform .7s cubic-bezier(.3,.7,.2,1);
+}
+.back { transform: rotateY(180deg); padding: 2.25rem 1.6rem; }
+.flip.flipped .front { transform: rotateY(-180deg); }
+.flip.flipped .back { transform: rotateY(0deg); }
+.rsvp-inner .btn, .form-actions .btn { border: 0; cursor: pointer; }
+.front { align-content: center; }
+
+#rsvp-form { display: grid; gap: 1.15rem; text-align: left; max-width: 30rem; margin-inline: auto; }
+.form-title { text-align: center; margin-bottom: .25rem !important; }
+.field { display: grid; gap: .4rem; border: 0; margin: 0; padding: 0; min-width: 0; }
+.field label, .field legend { font-weight: 600; padding: 0; }
+.opt { font-weight: 400; color: #8494bd; font-size: .9rem; margin-left: .3rem; }
+input[type="text"], select, textarea {
+  font: 500 1rem/1.4 var(--font-body);
+  letter-spacing: .01em;
+  color: var(--white);
+  background: #0a1633;
+  border: 2px solid #2c4580;
+  border-radius: 10px;
+  padding: .7rem .85rem;
+  width: 100%;
+}
+textarea { resize: vertical; min-height: 3.2rem; }
+input[type="text"]::placeholder, textarea::placeholder { color: #5f6f99; }
+input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 10px rgba(63, 224, 255, .45); }
+.pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+.pills input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pills label {
+  font-weight: 600;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  border: 2px solid #2c4580;
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.pills label:hover { border-color: var(--cyan); }
+.pills input:checked + label { background: var(--green); border-color: var(--green); color: var(--navy-deep); box-shadow: 0 0 12px rgba(124, 240, 60, .6); }
+.pills input:focus-visible + label { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.err { margin: 0; color: #ff9ad0; font-size: .9rem; }
+.form-actions { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-top: .4rem; }
+.form-actions .btn[disabled] { opacity: .7; cursor: progress; }
+.link-btn {
+  background: none; border: 0; padding: .4rem; cursor: pointer;
+  font: 600 .95rem/1 var(--font-body); color: var(--muted); text-decoration: underline; text-underline-offset: 3px;
+}
+.link-btn:hover { color: var(--white); }
+.link-btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+.thanks { display: grid; gap: 1rem; justify-items: center; text-align: center; padding-block: 2rem; outline: none; }
+.thanks p { color: var(--muted); max-width: 26rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .face { transition: opacity .2s ease; transform: none !important; }
+  .back { opacity: 0; }
+  .flip.flipped .front { opacity: 0; }
+  .flip.flipped .back { opacity: 1; }
+}
+</style>
+
+</head>
+<body>
+<div class="waves" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="scene">
+    <svg viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:#0d1c40"/>
+          <stop offset=".6" style="stop-color:#2b2a78"/>
+          <stop offset="1" style="stop-color:#7a2f8f"/>
+        </linearGradient>
+        <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:#1a2f6e"/>
+          <stop offset="1" style="stop-color:#0f2150"/>
+        </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <path id="leaf" d="M0,0 C40,-34 96,-38 158,8 C120,-8 70,-6 0,6 Z"/>
+        <g id="flamingo" style="fill:none;stroke-linecap:round;stroke-linejoin:round">
+          <path d="M-2,18 V96 M6,18 l16,30 l-14,12" style="stroke:#ffb63a;stroke-width:4"/>
+          <path d="M-42,4 C-30,-26 20,-30 36,-6 C30,16 -10,26 -42,4 Z" style="stroke:#ff4fd8;stroke-width:5"/>
+          <path d="M-26,-2 C-12,-14 8,-14 18,-4" style="stroke:#ff4fd8;stroke-width:4"/>
+          <path d="M-42,4 l-16,-6 l6,10" style="stroke:#ff4fd8;stroke-width:4"/>
+          <path d="M30,-8 C50,-32 4,-52 18,-82 C24,-96 38,-102 44,-94" style="stroke:#ff4fd8;stroke-width:5"/>
+          <circle cx="42" cy="-96" r="8" style="stroke:#ff4fd8;stroke-width:4"/>
+          <path d="M49,-98 q14,2 12,18 q-5,-8 -13,-10" style="stroke:#ffb63a;stroke-width:4"/>
+        </g>
+      </defs>
+      <rect width="1600" height="520" fill="url(#sky)"/>
+      <g id="stars" style="fill:#f2f6ff"></g>
+
+      <!-- Neon sun with a spiral, like the print -->
+      <g transform="translate(1180,330)" filter="url(#glow)" style="fill:none;stroke:#d65cf0;stroke-width:6;stroke-linecap:round">
+        <circle r="70"/>
+        <path class="spin" id="spiral"/>
+        <g id="rays"></g>
+      </g>
+
+      <rect y="500" width="1600" height="200" fill="url(#ocean)"/>
+      <g class="wave" filter="url(#glow)" style="fill:none;stroke:#3fe0ff;stroke-width:4;stroke-linecap:round" id="waterLines"></g>
+
+      <!-- Island beach, outlined in neon green -->
+      <path d="M0,690 Q400,660 800,688 T1600,680 V800 H0 Z" style="fill:#0d1c40"/>
+      <path d="M0,690 Q400,660 800,688 T1600,680" filter="url(#glow)" style="fill:none;stroke:#7cf03c;stroke-width:5"/>
+
+      <!-- Beach umbrella -->
+      <g transform="translate(1250,500)" filter="url(#glow)" style="fill:none;stroke-linecap:round;stroke-linejoin:round">
+        <path d="M0,0 V225" style="stroke:#ffb63a;stroke-width:6"/>
+        <path d="M-150,40 L0,-40 L150,40 Z" style="fill:#0d1c40;stroke:#3fe0ff;stroke-width:5"/>
+        <path id="fringe" style="stroke:#3fe0ff;stroke-width:4"/>
+      </g>
+
+      <!-- String lights -->
+      <path id="wire" d="M-20,30 Q400,120 800,40 T1620,40" style="fill:none;stroke:#b3c1e6;stroke-width:2.5;opacity:.6"/>
+      <g id="lamps" filter="url(#glow)"></g>
+
+      <!-- Flamingos on the sand -->
+      <g transform="translate(540,690) scale(.95)" filter="url(#glow)"><g class="preen"><use href="#flamingo"/></g></g>
+      <g transform="translate(1070,700) scale(-.85,.85)" filter="url(#glow)"><g class="preen" style="animation-delay:1.3s"><use href="#flamingo"/></g></g>
+
+      <g id="palms" filter="url(#glow)"></g>
+    </svg>
+    <div class="sign-wrap">
+      <div class="sign" id="sign">
+        <h1><span class="script">Samantha's</span><span class="slab">40th</span></h1>
+        <span class="tag">LIVIN' ON TIKI TIME</span>
+      </div>
+    </div>
+  </div>
+  <p class="dateline"><span>Friday &amp; Saturday, March 5–6, 2027</span><span>St. Petersburg, Florida</span><img class="tiki" src="flamingo-mug.webp" alt="" width="360" height="481"></p>
+</header>
+
+<main class="wrap">
+  <section class="rsvp" id="rsvp">
+    <div class="flip" id="flip">
+      <div class="face front rsvp-inner" id="front">
+        <h2>40 looks good on her.<br><span class="h2-sub">You’ll look good next to her.</span></h2>
+        <p class="intro">Before we lock in a venue, we need two things from you:</p>
+        <ul class="asks">
+          <li>Whether you're in, a maybe, or out</li>
+          <li>How many are coming from your crew</li>
+        </ul>
+        <button class="btn" id="rsvp-btn" type="button">RSVP by Nov. 15th</button>
+        <p class="fine">This isn't a commitment. "Probably!" is a perfectly good answer for now.</p>
+      </div>
+
+      <div class="face back" id="back" aria-hidden="true">
+        <form id="rsvp-form" novalidate>
+          <h2 class="form-title">Count me in?</h2>
+
+          <div class="field">
+            <label for="f-name">Your name(s)</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jay and Joy Goodman" required>
+            <p class="err" id="err-name" hidden>Add your name so we know who's coming.</p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Can you make it?</legend>
+            <div class="pills">
+              <input type="radio" id="a-in" name="attend" value="I'm in!"><label for="a-in">I'm in!</label>
+              <input type="radio" id="a-maybe" name="attend" value="Maaaaaaybe"><label for="a-maybe">Maaaaaaybe</label>
+              <input type="radio" id="a-out" name="attend" value="Can't make it"><label for="a-out">Can't make it</label>
+            </div>
+            <p class="err" id="err-attend" hidden>Pick one, even if it's a maybe.</p>
+          </fieldset>
+
+          <div class="field" id="count-field">
+            <label for="f-count">How many people are coming with you?</label>
+            <select id="f-count" name="count">
+              <option value="" selected disabled>Choose</option>
+              <option value="Just me!">Just me!</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <p class="err" id="err-count" hidden>Let us know how many to plan for.</p>
+          </div>
+
+          <div class="field">
+            <label for="f-notes">Anything we should know? <span class="opt">Optional</span></label>
+            <textarea id="f-notes" name="notes" rows="2" placeholder="Arriving Thursday, bringing the kids, etc."></textarea>
+          </div>
+
+          <p class="err" id="err-send" hidden>That didn't go through. Check your connection and try again.</p>
+          <div class="form-actions">
+            <button class="btn" type="submit" id="submit-btn">Send my RSVP</button>
+            <button class="link-btn" type="button" id="back-btn">Back</button>
+          </div>
+        </form>
+
+        <div class="thanks" id="thanks" hidden tabindex="-1">
+          <h2>Mahalo! You're on the list.</h2>
+          <p>We'll send the full plan, venue and hotel options once we have a headcount.</p>
+          <button class="link-btn" type="button" id="again-btn">Change my answer</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<script>
+  (function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const el = (tag, attrs, parent) => {
+      const n = document.createElementNS(NS, tag);
+      for (const k in attrs) n.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(n);
+      return n;
+    };
+
+    // Stars
+    let seed = 40;
+    const rand = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    const stars = document.getElementById("stars");
+    for (let i = 0; i < 50; i++) {
+      const c = el("circle", { cx: (rand() * 1600).toFixed(0), cy: (90 + rand() * 300).toFixed(0), r: (0.8 + rand() * 1.8).toFixed(1), class: "twinkle" }, stars);
+      c.style.animationDelay = (rand() * 3).toFixed(2) + "s";
+    }
+
+    // Sun spiral and rays
+    let sp = "M0,0";
+    for (let t = 0; t <= 1; t += 0.02) {
+      const a = t * Math.PI * 5, r = t * 48;
+      sp += ` L${(r * Math.cos(a)).toFixed(1)},${(r * Math.sin(a)).toFixed(1)}`;
+    }
+    document.getElementById("spiral").setAttribute("d", sp);
+    const rays = document.getElementById("rays");
+    for (let k = 0; k < 8; k++) {
+      const a = (k / 8) * Math.PI * 2;
+      el("path", { d: `M${(92 * Math.cos(a)).toFixed(1)},${(92 * Math.sin(a)).toFixed(1)} L${(124 * Math.cos(a)).toFixed(1)},${(124 * Math.sin(a)).toFixed(1)}` }, rays);
+    }
+
+    // Wavy water lines
+    const water = document.getElementById("waterLines");
+    [[540, 18, 0.6], [590, 22, 0.8], [645, 26, 1]].forEach(([y, amp, op]) => {
+      let d = `M-80,${y}`;
+      for (let x = -80; x < 1700; x += 60) d += ` q15,${-amp / 2} 30,0 t30,0`;
+      el("path", { d, opacity: op }, water);
+    });
+
+    // Umbrella fringe
+    let d = "M-150,40";
+    for (let x = -150; x < 150; x += 15) d += ` L${x + 7.5},${62 + (x % 30 === 0 ? 6 : 0)} L${x + 15},40`;
+    document.getElementById("fringe").setAttribute("d", d);
+
+    // String lights along the wire
+    const wire = document.getElementById("wire");
+    const lamps = document.getElementById("lamps");
+    const colors = ["#ffb63a", "#ff4fd8", "#3fe0ff", "#7cf03c"];
+    const len = wire.getTotalLength();
+    for (let i = 1; i < 22; i++) {
+      const p = wire.getPointAtLength((len * i) / 22);
+      const b = el("circle", { cx: p.x, cy: p.y + 10, r: 7, class: "lamp" }, lamps);
+      b.style.fill = colors[i % colors.length];
+      b.style.animationDelay = ((i % 5) * 0.3).toFixed(1) + "s";
+    }
+
+    // Neon palm trees: gold trunks, green frond outlines
+    const palms = document.getElementById("palms");
+    const palm = (base, crown, scale, delay) => {
+      const [bx, by] = base, [cx, cy] = crown;
+      const mx = (bx + cx) / 2 + (cx > bx ? -40 : 40) * scale;
+      const my = (by + cy) / 2;
+      const w0 = 24 * scale, w1 = 10 * scale;
+      const tree = el("g", { class: "trunk-sway" }, palms);
+      tree.style.animationDelay = delay + "s";
+      el("path", { d: `M${bx - w0 / 2},${by} Q${mx - w0 / 2},${my} ${cx - w1 / 2},${cy} L${cx + w1 / 2},${cy} Q${mx + w0 / 2},${my} ${bx + w0 / 2},${by} Z`, style: "fill:#0d1c40;stroke:#ffb63a;stroke-width:4;stroke-linejoin:round" }, tree);
+      const holder = el("g", { transform: `translate(${cx},${cy}) scale(${scale})` }, tree);
+      const crownG = el("g", { class: "sway" }, holder);
+      crownG.style.animationDelay = delay + "s";
+      const frondStyle = "fill:#0d1c40;stroke:#7cf03c;stroke-width:" + (4 / scale).toFixed(2) + ";stroke-linejoin:round";
+      [-158, -128, -96, -62, -30, -4, 22, 48].forEach((a) => {
+        const t = a < -90 ? `scale(-1,1) rotate(${-180 - a})` : `rotate(${a})`;
+        el("use", { href: "#leaf", transform: t, style: frondStyle }, crownG);
+      });
+      el("use", { href: "#leaf", transform: "rotate(70) scale(.8)", style: frondStyle }, crownG);
+      el("use", { href: "#leaf", transform: "scale(-1,1) rotate(70) scale(.8)", style: frondStyle }, crownG);
+    };
+    palm([150, 820], [250, 230], 1.2, 0);
+    palm([40, 820], [80, 380], 0.8, 0.7);
+    palm([1470, 820], [1360, 210], 1.3, 0.35);
+    palm([1590, 820], [1520, 360], 0.85, 1.1);
+
+    // Marquee bulbs around the sign
+    const sign = document.getElementById("sign");
+    const n = window.innerWidth < 640 ? 20 : 28;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2;
+      const s = document.createElement("span");
+      s.className = "bulb c" + (i % 3);
+      s.style.left = (50 + 50 * Math.cos(a)) + "%";
+      s.style.top = (50 + 50 * Math.sin(a)) + "%";
+      s.style.animationDelay = ((i % 3) * 0.6) + "s";
+      sign.appendChild(s);
+    }
+  })();
+
+  // RSVP: flip the card to the form, then post answers to the Google Form.
+  const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdmafi6eh5IGjW2NHCJJ1Q0bxvMQqOC0bSQJ_onvZ2NYiBB2g/formResponse";
+  const FORM_LINK = "https://forms.gle/iToaFSix4DC4GkpeA";
+  const ENTRY = { name: "", attend: "", count: "", notes: "" };
+
+  const flip = document.getElementById("flip");
+  const front = document.getElementById("front");
+  const back = document.getElementById("back");
+  const form = document.getElementById("rsvp-form");
+  const thanks = document.getElementById("thanks");
+  const countField = document.getElementById("count-field");
+
+  function showBack(on) {
+    flip.classList.toggle("flipped", on);
+    back.setAttribute("aria-hidden", on ? "false" : "true");
+    front.setAttribute("aria-hidden", on ? "true" : "false");
+    back.inert = !on; front.inert = on;
+    if (on) setTimeout(() => document.getElementById("f-name").focus({ preventScroll: true }), 450);
+  }
+  back.inert = true;
+
+  document.getElementById("rsvp-btn").addEventListener("click", () => showBack(true));
+  document.getElementById("back-btn").addEventListener("click", () => showBack(false));
+  document.getElementById("again-btn").addEventListener("click", () => {
+    thanks.hidden = true; form.hidden = false;
+    document.getElementById("f-name").focus();
+  });
+
+  // Hide the headcount question for people who can't make it.
+  form.addEventListener("change", (e) => {
+    if (e.target.name === "attend") {
+      countField.hidden = e.target.value === "Can't make it";
+      document.getElementById("err-attend").hidden = true;
+    }
+    if (e.target.name === "count") document.getElementById("err-count").hidden = true;
+  });
+  document.getElementById("f-name").addEventListener("input", () => { document.getElementById("err-name").hidden = true; });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("f-name").value.trim();
+    const attend = (form.querySelector('input[name="attend"]:checked') || {}).value || "";
+    const out = attend === "Can't make it";
+    const count = out ? "Just me!" : document.getElementById("f-count").value;
+    const notes = document.getElementById("f-notes").value.trim();
+
+    let ok = true;
+    document.getElementById("err-name").hidden = !!name; if (!name) ok = false;
+    document.getElementById("err-attend").hidden = !!attend; if (!attend) ok = false;
+    document.getElementById("err-count").hidden = !!count; if (!count) ok = false;
+    if (!ok) return;
+
+    const body = new URLSearchParams();
+    body.append(ENTRY.name, name);
+    body.append(ENTRY.attend, attend);
+    body.append(ENTRY.count, count);
+    if (notes) body.append(ENTRY.notes, notes);
+
+    const submit = document.getElementById("submit-btn");
+    submit.disabled = true; submit.textContent = "Sending…";
+    document.getElementById("err-send").hidden = true;
+    try {
+      await fetch(FORM_ACTION, { method: "POST", mode: "no-cors", body });
+      form.hidden = true; thanks.hidden = false; thanks.focus();
+      form.reset(); countField.hidden = false;
+    } catch (err) {
+      document.getElementById("err-send").hidden = false;
+    } finally {
+      submit.disabled = false; submit.textContent = "Send my RSVP";
+    }
+  });
+</script>
+
+</body>
+</html>
