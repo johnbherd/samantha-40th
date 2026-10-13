@@ -342,7 +342,9 @@ footer {
   -webkit-backface-visibility: hidden;
   transition: transform .7s cubic-bezier(.3,.7,.2,1);
 }
-.back { transform: rotateY(180deg); padding: 2.25rem 1.6rem; display: grid; align-content: center; }
+.back { transform: rotateY(180deg); padding: 2.25rem 1.6rem; display: grid; align-items: center; }
+.back > * { grid-area: 1 / 1; }
+#rsvp-form.gone { visibility: hidden; }
 .flip.flipped .front { transform: rotateY(-180deg); }
 .flip.flipped .back { transform: rotateY(0deg); }
 .front { align-content: center; }
@@ -665,7 +667,7 @@ input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-c
   document.getElementById("rsvp-btn").addEventListener("click", () => showBack(true));
   document.getElementById("back-btn").addEventListener("click", () => showBack(false));
   document.getElementById("again-btn").addEventListener("click", () => {
-    thanks.hidden = true; form.hidden = false;
+    thanks.hidden = true; form.classList.remove("gone");
     document.getElementById("f-name").focus();
   });
 
@@ -704,7 +706,7 @@ input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-c
     document.getElementById("err-send").hidden = true;
     try {
       await fetch(FORM_ACTION, { method: "POST", mode: "no-cors", body });
-      form.hidden = true; thanks.hidden = false; thanks.focus();
+      form.classList.add("gone"); thanks.hidden = false; thanks.focus();
       form.reset(); countField.hidden = false;
     } catch (err) {
       document.getElementById("err-send").hidden = false;
