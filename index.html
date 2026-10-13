@@ -335,16 +335,17 @@ footer {
 }
 
 /* Flip card */
-.flip { position: relative; perspective: 1600px; }
+.flip { display: grid; perspective: 1600px; }
 .face {
-  position: relative;
+  grid-area: 1 / 1;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transition: transform .7s cubic-bezier(.3,.7,.2,1);
 }
-.back { position: absolute; top: 0; left: 0; right: 0; transform: rotateY(180deg); padding: 2.25rem 1.6rem; }
-.flip.flipped .front { position: absolute; top: 0; left: 0; right: 0; transform: rotateY(-180deg); }
-.flip.flipped .back { position: relative; transform: rotateY(0deg); }
+.back { transform: rotateY(180deg); padding: 2.25rem 1.6rem; }
+.flip.flipped .front { transform: rotateY(-180deg); }
+.flip.flipped .back { transform: rotateY(0deg); }
+.front { align-content: center; }
 .rsvp-inner .btn, .form-actions .btn { border: 0; cursor: pointer; }
 
 #rsvp-form { display: grid; gap: 1.15rem; text-align: left; max-width: 30rem; margin-inline: auto; }
