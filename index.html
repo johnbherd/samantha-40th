@@ -549,8 +549,8 @@ input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-c
         </form>
 
         <div class="thanks" id="thanks" hidden tabindex="-1">
-          <h2>Mahalo! You're on the list.</h2>
-          <p>We'll send the full plan, venue and hotel options once we have a headcount.</p>
+          <h2 id="thanks-title">Mahalo! You're on the list.</h2>
+          <p id="thanks-body">We'll send the full plan, venue and hotel options once we have a headcount.</p>
           <button class="link-btn" type="button" id="again-btn">Change my answer</button>
         </div>
       </div>
@@ -719,6 +719,13 @@ input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-c
     document.getElementById("err-send").hidden = true;
     try {
       await fetch(FORM_ACTION, { method: "POST", mode: "no-cors", body });
+      const msg = {
+        "I'm in!": ["Mahalo! You're on the list.", "We'll send the full plan, venue and hotel options once we have a headcount."],
+        "Maaaaaaybe": ["Fingers crossed!", "We'll send the full plan once it's set, so you can decide when you know more."],
+        "Can't make it": ["We'll miss you!", "Thanks for letting us know. We'll raise a mai tai in your honor."]
+      }[attend];
+      document.getElementById("thanks-title").textContent = msg[0];
+      document.getElementById("thanks-body").textContent = msg[1];
       form.classList.add("gone"); thanks.hidden = false; thanks.focus();
       form.reset(); countField.hidden = false;
     } catch (err) {
