@@ -10,6 +10,14 @@
 .tiki-link:hover .tiki { filter: drop-shadow(0 0 16px rgba(255, 79, 216, .85)); }
 .tiki-link:focus-visible { outline: none; }
 .tiki-link:focus-visible .tiki { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 12px; }
+.tiki-mobile { display: none; }
+@media (max-width: 820px) {
+  .dateline .tiki-link { display: none; }
+  .tiki-mobile { display: block; margin-bottom: 1.1rem; }
+  .tiki-mobile img { display: block; width: 92px; height: auto; filter: drop-shadow(0 0 10px rgba(255, 79, 216, .55)); animation: bob 3.2s ease-in-out infinite alternate; }
+  .tiki-mobile:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; border-radius: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .tiki-mobile img { animation: none; } }
 </style>
 <title>Samantha's 40th</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -485,6 +493,7 @@ input[type="text"]:focus, select:focus, textarea:focus { outline: none; border-c
   <section class="rsvp" id="rsvp">
     <div class="flip" id="flip">
       <div class="face front rsvp-inner" id="front">
+        <a class="tiki-mobile" href="https://www.youtube.com/watch?v=eXIX2oDLSTE&amp;list=RDeXIX2oDLSTE&amp;start_radio=1" target="_blank" rel="noopener" aria-label="Play a surprise song"><img src="flamingo-mug.webp" alt="" width="360" height="481"></a>
         <h2>40 looks good on her.<br><span class="h2-sub">You’ll look good next to her.</span></h2>
         <p class="intro">Before we lock in a venue, we need two things from you:</p>
         <ul class="asks">
